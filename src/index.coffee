@@ -25,6 +25,7 @@ sortPatterns = (patterns)->
     negatives: negatives
 
 getIgnore = (negatives, positiveIndex, ignore)->
+  ignore = [ignore] if isString ignore
   ignore ?= []
 
   negativePatterns = negatives.filter (negative)->

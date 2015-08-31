@@ -26,5 +26,9 @@ describe 'minimatch-ex', ->
     result.should.be.true
 
   it 'should match a negative patterns correctly', ->
-    result = minimatch 'a/b/test.md', ['*.txt', '*.m', '*.md', '!**/*.md']
+    result = minimatch 'test.md', ['*.txt', '*.m', '*.md', '**/*.md', '!test.md']
+    result.should.be.false
+
+  it 'should match a ignore patterns correctly', ->
+    result = minimatch 'test.md', ['*.txt', '*.m', '*.md', '**/*.md'], ignore: 'test.md'
     result.should.be.false
